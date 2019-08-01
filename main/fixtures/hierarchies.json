@@ -1,70 +1,70 @@
 [
     {
     "model": "main.hierarchy",
-    "pk": 1,
+    "pk": "1",
     "fields": {
         "hierarchy_name": "Domain"
         }
     },
     {
     "model": "main.hierarchy",
-    "pk": 2,
+    "pk": "2",
     "fields": {
         "hierarchy_name": "Kingdom"
         }
     },
     {
     "model": "main.hierarchy",
-    "pk": 3,
+    "pk": "3",
     "fields": {
         "hierarchy_name": "Phylum"
         }
     },
     {
     "model": "main.hierarchy",
-    "pk": 4,
+    "pk": "4",
     "fields": {
         "hierarchy_name": "Class"
         }
     },
     {
     "model": "main.hierarchy",
-    "pk": 5,
+    "pk": "5",
     "fields": {
         "hierarchy_name": "Order"
         }
     },
     {
     "model": "main.hierarchy",
-    "pk": 6,
+    "pk": "6",
     "fields": {
         "hierarchy_name": "Family"
         }
     },
     {
     "model": "main.hierarchy",
-    "pk": 7,
+    "pk": "7",
     "fields": {
         "hierarchy_name": "Genus"
         }
     },
     {
     "model": "main.hierarchy",
-    "pk": 8,
+    "pk": "8",
     "fields": {
         "hierarchy_name": "Species"
         }
     },
     {
     "model": "main.hierarchy",
-    "pk": 9,
+    "pk": "9",
     "fields": {
         "hierarchy_name": "Variety"
         },
     },
     {
     "model": "main.hierarchy",
-    "pk": 10,
+    "pk": "10",
     "fields": {
         "hierarchy_name": "Supergroup",
         "description"   : "used under Eukaryotic domain"
@@ -72,7 +72,7 @@
     },
     {
     "model": "main.hierarchy",
-    "pk": 11,
+    "pk": "11",
     "fields": {
         "hierarchy_name": "Unranked"
         }
