@@ -1,9 +1,9 @@
 [
-    {
-    "model": "main.category",
-    "pk": "1",
-    "fields": {
-        "category_name": "root",
-        }
-    }
+	{
+		"model": "main.category",
+		"pk": "1",
+		"fields": {
+			"category_name": "root",
+		}
+	}
 ]
