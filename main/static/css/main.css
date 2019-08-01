@@ -1,0 +1,19 @@
+.category_link {
+	font-weight: 700;
+	color: grey;
+	/*background-color: yellow;*/
+	font-family: arial;
+}
+.category_link:hover{
+	font-size: 1.1em;
+	color: black;
+}
+
+/* not helping... */
+.cards-container {
+  column-break-inside: avoid;
+  .card {
+    display: inline-block;
+    overflow: visible;
+  }
+}

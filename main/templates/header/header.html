@@ -1,0 +1,81 @@
+<head>
+
+    {% load static %}
+
+    <!-- {{ form.media }} -->
+
+    <link href="{% static 'tinymce/css/prism.css' %}" rel='stylesheet'>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{% static 'img/favicon-96x96.png' %}" type="image/x-icon">
+
+    <title>Tree Of Life</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> -->
+
+    <link rel='stylesheet' type="text/css" href="{% static 'css/main.css' %}" >
+
+
+    <style>
+    body {
+        /*font-family: 'Merriweather', serif;*/
+    } 
+    </style>
+
+</head>
+
+<body>
+    
+    {% include "includes/navbar.html" %}
+
+    {% include "includes/messages.html" %}
+
+    <!-- Main Content -->
+    <div class="row">
+        <br>
+        {% block content %}
+        {% endblock %}
+    </div>  
+
+    <!-- footer -->
+    <footer class="page-footer green lighten-2">
+      <div class="container">
+        <div class="row">
+          <div class="col l5 s12">
+            <h5 class="white-text">Contact</h5>
+            <p class="grey-text text-lighten-4">Meijian Li, &nbsp; meijianl@iastate.edu <br>
+                Wenyang Qian, &nbsp; wqian@iastate.edu<br>
+              </p>
+          </div>
+          <div class="col l5 offset-l2 s12">
+            <h5 class="white-text">Resources</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Flickr</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Additional Scripts -->
+    <script>
+        M.AutoInit();
+        var elem = document.querySelector('.collapsible.expandable');
+        var instance = M.Collapsible.init(elem, {
+        accordion: false
+        });
+    </script>
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+
+</body>
+

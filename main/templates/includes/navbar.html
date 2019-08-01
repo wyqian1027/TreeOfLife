@@ -1,0 +1,39 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="/new_category">New Category</a></li>
+  <li class="divider"></li>
+  <li><a href="/all_category">Show All Categories</a></li>
+  <li class="divider"></li>
+</ul>
+
+<nav>
+    <div class="nav-wrapper green lighten-2">
+      <a href="/" class="brand-logo center">&emsp;Tree Of Life (Bio Classification)</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+        {% if user.is_authenticated %}
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Actions<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="/acount">{{user.username}}</a></li>
+            <li><a href="/logout">Logout</a></li>
+        {% else %}
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+  <li><a href="/">Home</a></li>
+    {% if user.is_authenticated %}
+      <li><a href="/new_category">New Category</a></li>
+      <li><a href="/all_category">Show All Categories</a></li>
+      <li><a href="/acount">{{user.username}}</a></li>
+      <li><a href="/logout">Logout</a></li>
+    {% else %}
+      <li><a href="/register">Register</a></li>
+      <li><a href="/login">Login</a></li>
+    {% endif %}
+</ul>

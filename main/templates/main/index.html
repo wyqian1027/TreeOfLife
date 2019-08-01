@@ -1,0 +1,101 @@
+{% extends "header/header.html" %}
+
+{% block content %}
+
+	{% load static %}
+
+	<div style="margin: 20px 20px" class="row"> 
+		<div class="container" style="max-width: 50%; text-align: center">
+			{% if current.category_name != "root" and display != "none" %}   
+			<h5 style="font-weight: 700">&nbsp; <em>{{current.hierarchy}}</em>: {{ current.category_name }}</h5>
+			<br>
+			{% if user.is_authenticated %}
+                <a style="" class="delete-btn black-text" href="/category/del/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">delete</i><span  style="vertical-align: middle; color: #616161">&nbsp;DELETE</span></a>
+                <a style="" class="delete-btn black-text" href="/category/edit/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">edit</i><span  style="vertical-align: middle; color: #616161">&nbsp;EDIT</span></a>
+		    {% endif %}				
+			<p style="font-size:1.2em"><em>created by {{current.created_by}} on {{current.create_date}}</em></p>
+			<p style="font-size:1.2em">{{current.description}}</p>
+			<br>
+			<div style="display: inline-block">
+				<p style="font-size:1.2em; text-align: left;">{{evoPath|safe}}</p>
+			</div>
+			    
+			<br>
+				{% if subCounts > 1 %}   
+				<h5 style="font-weight: 700">&nbsp; Found {{subCounts}} Subordinate Categories:</h5>
+				{% elif subCounts == 1 %}
+				<h5 style="font-weight: 700">&nbsp; Found 1 Subordinate Category:</h5>
+				{% else %}
+				<!-- <p style="font-size:1.2em"><a class="" href="/cats/{{current.category_parent}}">Go to Parent Category</a></p> -->
+				{% endif %}
+			{% endif %}
+
+			{% if display == "none" %}   
+			<h5 style="font-weight: 700">&nbsp; Total number of Categories: <strong>{{total}}</strong></h5>
+			{% endif %}
+		</div>
+	</div>
+	{% if current.category_name != "root" and subCounts != 0 %}
+		<div class="divider"></div>
+	{% endif %}
+
+	<div style="margin: 20px 20px" class="row">
+	        {% for cat in cats %}
+			<div class="col s12 m6 l4 xl3 cards-container">
+				<div class="card hoverable large" >
+					<div class="card-image waves-effect waves-block waves-light">
+
+						{% if cat.image_address == "maomao" %}
+							<img class="activator" src="{% static 'img/Maomao.jpg' %}" alt="Image URL Broken">
+						{% elif cat.image_address == "none" %}
+							<img class="activator" src="http://www.how-to-draw-cartoons-online.com/image-files/cartoon-cell-5.gif" alt="Image URL Broken">
+						{% else %}
+							{% with image_static=cat.image_address %}
+								<img class="activator" src="{{image_static}}" alt="Image URL Broken">
+							{% endwith %}
+						{% endif %}
+
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4"> {{cat.category_name}} <em>({{cat.hierarchy}})</em><i class="material-icons right">more_vert</i></span>
+
+						<p><a href="/category/{{cat.category_name}}" class="category_link">Go to SUB</a></p>
+						{% if cat.category_parent.category_name != "root" %}
+							<p><a href="/category/{{cat.category_parent.category_parent}}" class="category_link">Go to PARENT</a></p>
+						{% endif %}
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">{{cat.category_name}}<i class="material-icons right">close</i></span>
+						<p>Added by <strong>{{cat.created_by}}</strong> on <strong>{{cat.create_date}}</strong></p>
+						{% if current.category_name != "root" %}
+							<p><strong>Parent</strong>: {{cat.category_parent}}</p>
+						{% endif %}
+						<p><strong>Description</strong>:<br>
+						{{cat.description|safe}}</p>	
+						<p><strong>Image</strong>: <br>
+						{{cat.image_description}}</p>			
+					</div>
+				 </div>    
+			</div>
+			{% endfor %}   
+
+			{% if user.is_authenticated and current.category_name != "root" %}
+            <div class="col s12 m6 l4 xl3 cards-container">
+				<div class="card hoverable small " style="vertical-align: middle;" > 
+					<!-- <div style="color: #616161" class="card-content activator grey-text text-darken-4">
+                        <span class="card-title"><strong>Add New Category to</strong></span>
+                        <h5 style="font-weight: 700"><em>{{current.hierarchy}}</em> {{ current.category_name }}</h5>
+                    </div> -->
+                    <div class="card-content" style="font-size: 2em">
+                        <a style="display: block;" class="hover-effect-1 black-text" href="/category/new/{{current.category_name}}" ><i style="vertical-align: middle; color: #616161" class="material-icons">add</i><span style="vertical-align: middle; color: #616161">&nbsp;&nbsp;Add New Category</span></a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}  
+		</div>  	
+    </div>
+
+        
+    
+
+{% endblock %}

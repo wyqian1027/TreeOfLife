@@ -1,0 +1,40 @@
+{% extends "header/header.html" %}
+
+{% block content %}
+
+<div class="container">
+{% if user.is_authenticated %}
+    <h4 class="center">Welcome back, <strong>{{user.username}}</strong></h4>
+    <br>
+
+    <ul class="collapsible expandable popout center" style="font-size: 1.2em; margin: auto; max-width: 800px">
+        <li >
+            <div class="collapsible-header">First Name</div>
+            <div class="collapsible-body red lighten-5"><span>{{user.first_name}}</span></div>
+        </li>
+        <li class="">
+            <div class="collapsible-header">Last Name</div>
+            <div class="collapsible-body red lighten-5"><span>{{user.last_name}}</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header">Email</div>
+            <div class="collapsible-body green lighten-5"><span>{{user.email}}</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header">Unread Messages<span class="new badge">0</span></div>
+            <div class="collapsible-body blue lighten-5"></div>
+        </li>
+        <li>
+            <div class="collapsible-header">Total Categories Contributed<span class="badge">{{catCounts}}</span></div>
+            <div class="collapsible-body orange lighten-5"></div>
+        </li>
+        <li>
+            <div class="collapsible-header">Total Photos Contributed<span class="badge">0</span></div>
+            <div class="collapsible-body orange lighten-5"><span>0</span></div>
+        </li>
+    </ul>
+    <br>
+{% endif %}
+</div>
+
+{% endblock %}

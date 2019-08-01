@@ -1,0 +1,55 @@
+{% extends "header/header.html" %}
+
+{% block content %}
+
+{{ form.media }}
+<div class="container" style="max-width: 800px;">
+    <br>
+    <h4 style="text-align: center">Edit Category <strong>{{cat_name}}</strong></h4>
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            {{ form.category_name.errors }}
+            <label for="{{ form.category_name.id_for_label }}">Category Name:</label>
+            {{ form.category_name }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.hierarchy.errors }}
+            <label for="{{ form.hierarchy.id_for_label }}">Hierarchy:</label>
+            {{ form.hierarchy }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.category_parent.errors }}
+            <label for="{{ form.category_parent.id_for_label }}">Parent Category Name:</label>
+            {{ form.category_parent }}
+        </div>
+        <br>
+        <div class="fieldWrapper" style="margin: auto;">
+            {{ form.description.errors }}
+            <label for="{{ form.tag_color.id_for_label }}">Description:<br></label>
+            {{ form.description }}
+        </div>
+        <br>
+        <h5 style="text-align: center">Cover Image</h5>
+        <div class="fieldWrapper">
+            {{ form.image_address.errors }}
+            <label for="{{ form.image_address.id_for_label }}">Image Address:</label>
+            {{ form.image_address }}
+        </div>
+
+        <div class="fieldWrapper">
+            {{ form.image_description.errors }}
+            <label for="{{ form.image_description.id_for_label }}">Image Description:</label>
+            {{ form.image_description }}
+        </div>
+
+        <br>
+        <div style="text-align: center">
+            <button id="tiny-submit" class="btn" type="submit">Submit Edits</button>
+        </div>
+    </form>
+</div>    
+
+{% endblock %}
