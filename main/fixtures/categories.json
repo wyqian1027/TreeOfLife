@@ -3,7 +3,7 @@
 		"model": "main.category",
 		"pk": "1",
 		"fields": {
-			"category_name": "root",
+			"category_name": "root"
 		}
 	}
 ]
