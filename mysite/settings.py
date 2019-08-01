@@ -87,10 +87,25 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # HEROKU
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd55hhphr7n3gdh',
+        'USER': 'ddboqtucskgexu',
+        'PASSWORD': '1580afcb914b121dd8e745f58ec9644ef0067d83b3785ca721fbbdfd204e363b',
+        'HOST': 'ec2-174-129-194-188.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.environ.get('ENGINE', 'django.db.backends.sqlite3'), 
+#         'NAME': os.environ.get('DB_NAME', os.path.join(BASE_DIR, 'db.sqlite3')), 
+#         'USER': os.environ.get('DB_USER', ''), 
+#         'PASSWORD': os.environ.get('DB_PASSWORD', ''), 
+#         'HOST': os.environ.get('DB_HOST', ''), 
+#         'PORT': os.environ.get('DB_PORT', ''), 
+#     }
+# }
 
 
 # Password validation
