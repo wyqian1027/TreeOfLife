@@ -60,7 +60,7 @@
     "pk": "9",
     "fields": {
         "hierarchy_name": "Variety"
-        },
+        }
     },
     {
     "model": "main.hierarchy",
