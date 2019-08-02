@@ -41,3 +41,7 @@ class Category(models.Model):
 
 #TODO define new Image Model so that image can be added freely
 
+#TODO favorite features
+
+#TODO comments
+
