@@ -6,7 +6,7 @@
 
 	<div style="margin: 20px 20px" class="row"> 
 		<div class="col s12 m12 l6 xl6" >
-			{% if current.category_name != "root" and display != "none" %}  
+		{% if current.category_name != "root" and display != "none" %}  
 			{% if cat.image_address != "none" %}
 				{% with image_static=current.image_address %}
 					<img class="activator" src="{{image_static}}" alt="Image URL Broken" style="max-width: 80%; margin-left: 11%">
@@ -21,7 +21,11 @@
 			<div style="display: inline-block">
 				<p style="font-size:1.2em; text-align: left;">{{evoPath|safe}}</p>
 			</div>
-						
+			{% if current.category_parent.category_name != "root" %}
+				<p><a href="/category/{{current.category_parent.category_parent}}" class="category_link">Go to PARENT Category</a></p>
+			{% else %}
+				<p><a href="/" class="category_link">Go to PARENT Category</a></p>
+			{% endif %}
 			<p style="font-size:1.2em">{{current.description}}</p>
 			<p style="font-size:1.2em"><strong>Author: </strong>{{current.created_by}} &nbsp; <strong>Date</strong>: {{current.create_date}}
 			<div>
@@ -34,7 +38,7 @@
 
 			<br>		    
 			<br>
-			{% endif %}
+		{% endif %}
 		</div>
 	</div>
 
@@ -72,11 +76,8 @@
 				</div>
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"> {{cat.category_name}} <em>({{cat.hierarchy}})</em><i class="material-icons right">more_vert</i></span>
-
-					<p><a href="/category/{{cat.category_name}}" class="category_link">Go to SUB</a></p>
-					{% if cat.category_parent.category_name != "root" %}
-						<p><a href="/category/{{cat.category_parent.category_parent}}" class="category_link">Go to PARENT</a></p>
-					{% endif %}
+					<br>
+					<p style="font-size:1.1em"><a href="/category/{{cat.category_name}}" class="category_link">Go to SUB Category</a></p>
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">{{cat.category_name}}<i class="material-icons right">close</i></span>
