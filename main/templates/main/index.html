@@ -5,25 +5,33 @@
 	{% load static %}
 
 	<div style="margin: 20px 20px" class="row"> 
-		<div class="container" style="max-width: 50%; text-align: center">
+		<div class="col s12 m12 l6 xl6" >
 			{% if current.category_name != "root" and display != "none" %}  
 			{% if cat.image_address != "none" %}
 				{% with image_static=current.image_address %}
-					<img class="activator" src="{{image_static}}" alt="Image URL Broken" style="max-width: 100%">
+					<img class="activator" src="{{image_static}}" alt="Image URL Broken" style="max-width: 80%; margin-left: 11%">
 				{% endwith %}
 			{% endif %} 
 			<br>
-			<h4 style="font-weight: 700">&nbsp; <em>{{current.hierarchy}}</em>: {{ current.category_name }}</h4>
+			<p style="font-size:1.2em; text-align:center"><strong>Image: </strong>{{current.image_description}}</p>
+			<br>
+		</div>
+		<div class="col s12 m12 l6 xl6" >
+			<h4 style="font-weight: 700"><em>{{current.hierarchy}}</em>: {{ current.category_name }}</h4>
 			<div style="display: inline-block">
 				<p style="font-size:1.2em; text-align: left;">{{evoPath|safe}}</p>
 			</div>
 						
 			<p style="font-size:1.2em">{{current.description}}</p>
-			<p style="font-size:1.2em"><strong>Image: </strong>{{current.image_description}}<br><strong>Author: </strong>{{current.created_by}} &nbsp; <strong>Date</strong>: {{current.create_date}}</p>
-				{% if user.is_authenticated %}
-					<a style="" class="delete-btn black-text" href="/category/edit/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">edit</i><span  style="vertical-align: middle; color: #616161">&nbsp;EDIT</span></a>
-	                <a style="" class="delete-btn black-text" href="/category/del/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">delete</i><span  style="vertical-align: middle; color: #616161">&nbsp;DELETE</span></a>
+			<p style="font-size:1.2em"><strong>Author: </strong>{{current.created_by}} &nbsp; <strong>Date</strong>: {{current.create_date}}
+			<div>
+				{% if user.is_authenticated and user == current.created_by%}
+				<a style="" class="delete-btn black-text" href="/category/edit/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">edit</i><span  style="vertical-align: middle; color: #616161">&nbsp;EDIT</span></a>
+                <a style="" class="delete-btn black-text" href="/category/del/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">delete</i><span  style="vertical-align: middle; color: #616161">&nbsp;DELETE</span></a>
 			    {% endif %}	
+			</div>
+			</p>
+
 			<br>		    
 			<br>
 			{% endif %}
