@@ -7,3 +7,4 @@
 1. postgresql (remote, in use)
 2. sqlite3 (local)
 
+## Known Bugs and Issues:

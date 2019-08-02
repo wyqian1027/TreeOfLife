@@ -79,7 +79,7 @@
 			</div>
 			{% endfor %}   
 
-			{% if user.is_authenticated and current.category_name != "root" %}
+			{% if user.is_authenticated and current.category_name != "root" and display != "none" %}
             <div class="col s12 m6 l4 xl3 cards-container">
 				<div class="card hoverable small " style="vertical-align: middle;" > 
 					<!-- <div style="color: #616161" class="card-content activator grey-text text-darken-4">

@@ -29,7 +29,7 @@ class Category(models.Model):
 
 	# image/source/credit...
 	image_address = models.CharField(max_length=200, blank=True, default="none")
-	image_description = models.CharField(max_length=400, default="")
+	image_description = models.CharField(max_length=400, blank=True, default="")
 	
 
 
