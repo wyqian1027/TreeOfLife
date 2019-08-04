@@ -255,7 +255,7 @@ def edit_category(request, cat_name):
 
 # SHOWALL
 def show_all(request):
-	allObjs = Category.objects.filter(~Q(category_name="root"))
+	allObjs = Category.objects.filter(~Q(category_name="root")).order_by('-create_date')
 	return render(request=request,
 				  template_name="main/index.html",
 				  context={"cats"   : allObjs,

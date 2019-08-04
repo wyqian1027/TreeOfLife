@@ -7,12 +7,15 @@
 	<div style="margin: 20px 20px" class="row"> 
 		<div class="col s12 m12 l6 xl6" >
 		{% if current.category_name != "root" and display != "none" %}  
-			{% if cat.image_address != "none" %}
-			
+
+			{% if current.image_address == "none" %}
+				<img class="activator" src="http://www.how-to-draw-cartoons-online.com/image-files/cartoon-cell-5.gif" alt="Image URL Broken" style="max-width: 80%; margin: auto; display: block;">
+			{% else %}
 				{% with image_static=current.image_address %}
 				<img class="activator" src="{{image_static}}" alt="Image URL Broken" style="max-width: 80%; margin: auto; display: block;">
 				{% endwith %}
-			{% endif %} 
+			{% endif %}
+			
 			<br>
 			<p style="font-size:1.2em; text-align:center"><strong>Image: </strong>{{current.image_description}}</p>
 			<br>
@@ -30,10 +33,12 @@
 			<p style="font-size:1.2em">{{current.description}}</p>
 			<p style="font-size:1.2em"><strong>Author: </strong>{{current.created_by}} &nbsp; <strong>Date</strong>: {{current.create_date}}
 			<div>
-				{% if user.is_authenticated and user == current.created_by%}
-				<a style="" class="delete-btn black-text" href="/category/edit/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">edit</i><span  style="vertical-align: middle; color: #616161">&nbsp;EDIT</span></a>
-                <a style="" class="delete-btn black-text" href="/category/del/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">delete</i><span  style="vertical-align: middle; color: #616161">&nbsp;DELETE</span></a>
-			    {% endif %}	
+				{% if user.is_authenticated %}
+					{% if user == current.created_by or user.is_superuser %}
+					<a style="" class="delete-btn black-text" href="/category/edit/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">edit</i><span  style="vertical-align: middle; color: #616161">&nbsp;EDIT</span></a>
+	                <a style="" class="delete-btn black-text" href="/category/del/{{current.category_name}}" ><i style="vertical-align: middle; color:#616161" class="material-icons">delete</i><span  style="vertical-align: middle; color: #616161">&nbsp;DELETE</span></a>
+			    	{% endif %}	
+			    {% endif %}
 			</div>
 			</p>
 
